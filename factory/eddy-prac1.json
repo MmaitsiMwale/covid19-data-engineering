@@ -1,0 +1,9 @@
+{
+	"name": "eddy-prac1",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "69ceeaaa-ac26-4c3a-969a-b0469046658d",
+		"tenantId": "d3d18101-4c65-4933-97cb-51e1569fe116"
+	}
+}
