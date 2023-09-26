@@ -14,6 +14,9 @@
 		"ls_adls_eddystoragedatalake_properties_typeProperties_url": {
 			"value": "https://eddystoragedatalake.dfs.core.windows.net/"
 		},
+		"ls_http_cases_deaths_properties_typeProperties_url": {
+			"value": "https://github.com/cloudboxacademy/covid19/blob/main/raw/main/ecdc_data/cases_deaths.csv"
+		},
 		"tr_get_populaption_properties_typeProperties_scope": {
 			"value": "/subscriptions/f4f2d56a-35c6-453f-a783-504ef6cbf3e1/resourceGroups/eddy-arch/providers/Microsoft.Storage/storageAccounts/eddystrorage1"
 		},
