@@ -1,0 +1,18 @@
+{
+	"name": "tr_get_populaption",
+	"properties": {
+		"description": "Trigger to run after the population file is created in the population container",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/population/blobs/population_by_age.tsv.gz",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/f4f2d56a-35c6-453f-a783-504ef6cbf3e1/resourceGroups/eddy-arch/providers/Microsoft.Storage/storageAccounts/eddystrorage1",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
