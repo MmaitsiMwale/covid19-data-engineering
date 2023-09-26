@@ -1,0 +1,13 @@
+{
+	"name": "ls_http_cases_deaths",
+	"properties": {
+		"description": "COVID-19 cases and deaths in the EU per country with a granularity of daily",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://github.com/cloudboxacademy/covid19/blob/main/raw/main/ecdc_data/cases_deaths.csv",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
