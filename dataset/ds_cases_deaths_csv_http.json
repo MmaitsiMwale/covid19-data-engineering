@@ -1,0 +1,23 @@
+{
+	"name": "ds_cases_deaths_csv_http",
+	"properties": {
+		"description": "covid-19 cases and deaths in the Eu by country on a daily granularity ",
+		"linkedServiceName": {
+			"referenceName": "ls_http_cases_deaths",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "cloudboxacademy/covid19/blob/main/raw/main/ecdc_data/cases_deaths.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
