@@ -18,6 +18,10 @@
 		"ls_adls_eddystoragedatalake_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://eddystoragedatalake.dfs.core.windows.net/"
+		},
+		"tr_get_populaption_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/f4f2d56a-35c6-453f-a783-504ef6cbf3e1/resourceGroups/eddy-arch/providers/Microsoft.Storage/storageAccounts/eddystrorage1"
 		}
 	},
 	"variables": {
@@ -269,6 +273,37 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_population_raw_gz')]",
 				"[concat(variables('factoryId'), '/datasets/ds_population_raw_tsv')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tr_get_populaption')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Trigger to run after the population file is created in the population container",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_copy_population_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/population/blobs/population_by_age.tsv.gz",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('tr_get_populaption_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_copy_population_data')]"
 			]
 		}
 	]
