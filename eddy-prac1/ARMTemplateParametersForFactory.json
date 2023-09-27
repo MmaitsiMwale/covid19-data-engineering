@@ -11,6 +11,9 @@
 		"ls_adls_eddystoragedatalake_accountKey": {
 			"value": ""
 		},
+		"ls_aztraining_sa_connectionString": {
+			"value": ""
+		},
 		"ls_adls_eddystoragedatalake_properties_typeProperties_url": {
 			"value": "https://eddystoragedatalake.dfs.core.windows.net/"
 		},

@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_adls_eddystoragedatalake'"
 		},
+		"ls_aztraining_sa_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_aztraining_sa'"
+		},
 		"ls_adls_eddystoragedatalake_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://eddystoragedatalake.dfs.core.windows.net/"
@@ -59,6 +63,9 @@
 					},
 					"ls_adls_eddystoragedatalake_accountKey": {
 						"value": "[parameters('ls_adls_eddystoragedatalake_accountKey')]"
+					},
+					"ls_aztraining_sa_connectionString": {
+						"value": "[parameters('ls_aztraining_sa_connectionString')]"
 					},
 					"ls_adls_eddystoragedatalake_properties_typeProperties_url": {
 						"value": "[parameters('ls_adls_eddystoragedatalake_properties_typeProperties_url')]"

@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_adls_eddystoragedatalake'"
 		},
+		"ls_aztraining_sa_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_aztraining_sa'"
+		},
 		"ls_adls_eddystoragedatalake_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://eddystoragedatalake.dfs.core.windows.net/"
@@ -191,6 +195,35 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ds_cases_and_deaths_sa')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "covid cases and deaths in the EU per country per day.",
+				"linkedServiceName": {
+					"referenceName": "ls_aztraining_sa",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "cases_deaths.csv",
+						"container": "aztraining"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_aztraining_sa')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ds_cases_deaths_csv_http')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -303,6 +336,20 @@
 						"type": "SecureString",
 						"value": "[parameters('ls_adls_eddystoragedatalake_accountKey')]"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_aztraining_sa')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "linked service for azure training container",
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ls_aztraining_sa_connectionString')]"
 				}
 			},
 			"dependsOn": []
